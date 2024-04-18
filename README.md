@@ -18,6 +18,9 @@ To run the project using Docker, follow these steps:
 4. Wait till the image is built and the project is running.
 5. Main page of the project will be available at http://0.0.0.0:8000/books/
 
+## Workflow video
+A video demonstrating the workflow of the project is available at the following link: [Library Workflow Video](https://www.loom.com/share/544c8fecaec24754a29d22c86b5e180d?sid=1ca63938-fdea-4cf6-9ba8-d6e3afe926a6)
+
 ## Environment variables
 SQL_ENGINE=django.db.backends.postgresql
 SQL_DATABASE=postgres
