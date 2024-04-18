@@ -1,0 +1,106 @@
+[
+{
+    "fields": {
+        "name": "Taras Shevchenco"
+    },
+    "model": "books_app.author",
+    "pk": 1
+},
+{
+    "fields": {
+        "name": "Noname"
+    },
+    "model": "books_app.author",
+    "pk": 2
+},
+{
+    "fields": {
+        "name": "Stan Lee"
+    },
+    "model": "books_app.author",
+    "pk": 3
+},
+{
+    "fields": {
+        "is_borrowed": true,
+        "borrowed_due_date": "2024-04-01",
+        "author": 1,
+        "title": "Zapovit"
+    },
+    "model": "books_app.book",
+    "pk": 1
+},
+{
+    "fields": {
+        "is_borrowed": true,
+        "borrowed_due_date": "2024-04-19",
+        "author": 2,
+        "title": "Azbyka"
+    },
+    "model": "books_app.book",
+    "pk": 2
+},
+{
+    "fields": {
+        "is_borrowed": true,
+        "borrowed_due_date": "2024-04-27",
+        "author": 1,
+        "title": "The last of us"
+    },
+    "model": "books_app.book",
+    "pk": 3
+},
+{
+    "fields": {
+        "is_borrowed": false,
+        "borrowed_due_date": null,
+        "author": 3,
+        "title": "Spiderman"
+    },
+    "model": "books_app.book",
+    "pk": 4
+},
+{
+    "fields": {
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2024-04-18T07:26:52.363Z",
+        "borrowed_books": [
+            1,
+            2
+        ],
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$4oYqrYJlowmW$4V/O3JGubgjQnhk5s1AUuKiUdVcfT6ZfCe27aEbylao=",
+        "email": "",
+        "date_joined": "2024-04-17T11:44:59.012Z"
+    },
+    "model": "books_app.user",
+    "pk": 1
+},
+{
+    "fields": {
+        "username": "IVAN",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2024-04-18T05:50:27Z",
+        "borrowed_books": [
+            3
+        ],
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$YgBrPikLwURL$AMrToTkVVXl/P8N56bc1zRySho8rpCavuqOPQf+WWRk=",
+        "email": "Hell@sd.com",
+        "date_joined": "2024-04-18T05:50:27Z"
+    },
+    "model": "books_app.user",
+    "pk": 2
+}
+]

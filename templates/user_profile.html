@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">User profile</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ user.username }}</h5>
+                    <p class="card-text">Email: {% if user.email %} {{ user.email }} {% else %} User have no email {% endif %}</p>
+                    <h6 class="card-subtitle mb-2 text-muted">Borrowed books:</h6>
+                    {% if user.borrowed_books.all %}
+                        <ul class="list-group">
+                            {% for book in user.borrowed_books.all %}
+                                <li class="list-group-item">{{ book.title }} - {{ book.author }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="card-text">No borrowed books</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

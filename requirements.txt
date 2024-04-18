@@ -1,0 +1,5 @@
+certifi==2021.10.8
+Django==1.8.5
+django-six==1.0.5
+pathlib==1.0.1
+psycopg2-binary==2.8.6

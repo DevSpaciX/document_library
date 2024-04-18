@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Borrowed Due Date</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for book in books %}
+    <tr class="{% if book.borrowed_due_date < today %}table-danger{% elif book.borrowed_due_date < next_week %}table-warning{% else %}table-success{% endif %}">
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.borrowed_due_date }}</td>
+      <td>
+        {% if book.borrowed_due_date < today %}Overdue{% elif book.borrowed_due_date < next_week %}Due Soon{% else %}On Time{% endif %}
+      </td>
+      <td>
+        <a href="{% url 'user_profile' book.borrowers.first.pk %}" class="btn btn-primary btn-sm"> Contact with {{ book.borrowers.first.username }}</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

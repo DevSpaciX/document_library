@@ -1,0 +1,16 @@
+__pycache__
+temp_test.ipynb
+.DS_Store
+logs/
+*.session-journal
+*.session
+.idea
+venv/
+ENV/
+.venv
+test.session
+celerybeat-schedule
+.env
+temp.py
+downloads/
+test.py
