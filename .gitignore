@@ -1,4 +1,5 @@
 __pycache__
+*.pyc
 temp_test.ipynb
 .DS_Store
 logs/
