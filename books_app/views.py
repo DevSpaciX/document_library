@@ -1,7 +1,7 @@
 from datetime import datetime, date, timedelta
 
 
-from django.db.models import Q
+from django.db.models import Q, Prefetch
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -21,14 +21,23 @@ class BookListView(ListView):
     def get_queryset(self):
         query = self.request.GET.get('query', None)
         if query:
-            return Book.objects.filter(Q(title__icontains=query) | Q(author__name__icontains=query))
-        return Book.objects.all()
+            return Book.objects.filter(
+                Q(title__icontains=query) | Q(author__name__icontains=query)
+            ).select_related('author')
+        return Book.objects.all().select_related('author')
 
 
 class UserDetailView(DetailView):
     model = User
     template_name = 'user_profile.html'
     context_object_name = 'user'
+
+    def get_queryset(self):
+        return (
+            super(UserDetailView, self).
+            get_queryset().
+            prefetch_related(Prefetch('borrowed_books'))
+        )
 
 
 def borrow_book(request):
@@ -56,13 +65,13 @@ class BorrowedBooksListView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('query', None)
-        print (query)
+        queryset = Book.objects.filter(is_borrowed=True)
         if query:
-            return Book.objects.filter(
-                Q(is_borrowed=True) & Q(borrowers__username__contains=query) |
+            queryset = queryset.filter(
+                Q(borrowers__username__contains=query) |
                 Q(author__name__icontains=query) | Q(title__icontains=query)
             )
-        return Book.objects.filter(is_borrowed=True)
+        return queryset.select_related('author').prefetch_related('borrowers')
 
     def get_context_data(self, **kwargs):
         context = super(BorrowedBooksListView, self).get_context_data(**kwargs)
